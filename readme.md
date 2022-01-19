@@ -85,10 +85,21 @@ Classes Description
     - MoveToLift(self): Moving the node to left and append it to childering.
     - MovetoUp(self): Moving the node upward and append it to childering.
     - MoveToDown(self): Moving the node Downward and append it to childering.
-    -  isGoal(self,x,y): To check whether the coordinate (x,y) is reached the goal state or not.
+    - isGoal(self,x,y): To check whether the coordinate (x,y) is reached the goal state or not.
     -  print(self): Prints the coordinate (x,y).
     -  ExpandMove(self): To Expand the move for the four directions (up,down,left,right)
 
+- In Class BFS
+  - Search(self, root, goalx, goaly): it starts the BFS search algorithm which uses queue and checks if it is the solution or not ,if it is not it inters into the children and checks if one of them is the solution or not, if not it will add to the queue .The Search method begins the BFS by taking the root and the coordinate(x,y) to find the goal state. We implemented a while to help finding the goal. Then we implemented a for loop in it to search for children and look if they the goal or not if not add children to the white list and black list
+  - findpath(self, go, lis=[]): The goal is to find the path from the given go and append it to a given lis[] until there are not any parent
+
+- In Class DFS
+  - Search(self, root, goalx, goaly): Begins the DFS search algorithm by taking the root and the coordinate(x,y) to find the goal state. We implemented a while to help finding the goal in the following condition. Then we implemented a for loop in it to search for children and look if they the goal or not if not add children to the white list and black list
+
+  - findpath(self, go, lis=[]): The goal is to find the path from the given go and append it to a given lis[] until there are not any parent.
+- In Class Greedy
+  - Search(self, root, goalx, goaly): Begins the Greedy search algorithm by taking the root and the coordinate(x,y) to find the goal state. We implemented a while to help finding the goal in the following condition. Then we implemented a for loop in it to search for children and look if they the goal or not if not add children to the white list and black list.
+  - to search for children and look if they the goal or not if not add children to the white list and black list.
 
 
 
