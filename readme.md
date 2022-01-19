@@ -4,8 +4,36 @@ We will show you in this project the application of the Artificial Intelligent (
 
 ## Desing Classes
 Classes Description
-> *Breadth First Search (BFS)*
+> **Breadth First Search (BFS)**
 
  -A class initiated by initial state to find the goal state in BFS search algorithm.
+
+> **Depth First Search (DFS)**
+
+ -A class initiated by initial state to find the goal state in DFS search algorithm
+
+> **Astar**
+
+ -A class initiated by initial state to find the goal state by calculate F(n) and find the less costly path “Optimal path”.
+ 
+> **Greedy**
+
+ -A class initiated by initial state to find the goal state by Finding the less costly path “G(n)”.
+
+> **Node**
+
+ -A node class that helps search algorithms (BFS and DFS) to move and navigate its coordinate.
+
+> **main**
+
+ -Used to read an image in a specific location in computer and convert it into 2D-array and it has a main which triggers the whole program.
+
+> **NodeH**
+
+ -A node class that helps the specific heuristic search algorithms Greedy. to  move and navigate its coordinate.
+
+> **NodeHA**
+
+ -A node class that helps the specific heuristic search algorithms A*. to move and navigate its coordinate.
 
 
