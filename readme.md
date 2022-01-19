@@ -141,7 +141,11 @@ a given lis[] until there are not any parent
   - Euclidean(self): It finds the heuristic in Euclidean way, heuristicX*heuristicX and heuristicY*heuristicY then compine the result after that returns the square root of result on result.
   
 - In Class Astar
- 
+  - Search(self, root, goalx, goaly): Begins the A* search algorithm by taking the root and the coordinate(x,y) to find the goal state, We implemented a while to help finding the goal in the following condition. Then we implemented a for loop in it to search for children and look if they the goal or not if not add children to the white list and black list. 
+  - findpath(self, go, lis=[]): The goal is to find the path from the given go and append it to a given lis[] until there are not any parent.
+
+- In the main class: 
+  - Is where we read an image and insert it into 2D-array and it contain the main methods which start any search algorithm.
 
 
 
