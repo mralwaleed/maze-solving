@@ -151,12 +151,16 @@ a given lis[] until there are not any parent
 ## Result
 **Greedy Manhattan**
 Greedy Manhattan distance sample run:
+
 ![Greedy_Manhattan](https://github.com/mralwaleed/maze-solving/blob/gh-pages/Result/Greedy_Manhattan.png)
+
 It took 12 second to find the solution.
 
 **DFS Search**
 DFS Search Algorithm sample run:
+
 ![DFS](https://github.com/mralwaleed/maze-solving/blob/gh-pages/Result/BFS.png)
+
 It took 13 second to find the solution.
 
 
