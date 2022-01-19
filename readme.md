@@ -11,7 +11,7 @@ Install the necessary requirmenets by running:
     pip install -r requirements.txt
 ```
 
-**Running **
+**Running**
 
 1. Open a terminal and cd to the project directory and run readfile.py:
 ``` bash
