@@ -77,3 +77,19 @@ Classes Description
 
 
 
+
+## Implementation 
+- In Class Node “BFS and DFS’s Node”
+    - __init__(self,x,y,nim): A default constructor to store coordinate and data as attributes.
+    - MoveToRight(self): Moving the node to right and append it to childering.
+    - MoveToLift(self): Moving the node to left and append it to childering.
+    - MovetoUp(self): Moving the node upward and append it to childering.
+    - MoveToDown(self): Moving the node Downward and append it to childering.
+    -  isGoal(self,x,y): To check whether the coordinate (x,y) is reached the goal state or not.
+    -  print(self): Prints the coordinate (x,y).
+    -  ExpandMove(self): To Expand the move for the four directions (up,down,left,right)
+
+
+
+
+
