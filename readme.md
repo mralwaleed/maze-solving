@@ -10,14 +10,16 @@ Install the necessary requirmenets by running:
 ``` bash
     pip install -r requirements.txt
 ```
+
 **Running **
-1. Open a terminal and cd to the project directory and install requirements:
+
+1. Open a terminal and cd to the project directory and run readfile.py:
 ``` bash
    python3 readfile.py
 ```
 2. Enter initial state X and Y
   ``` bash
-    Welcome :)
+ Welcome :)
 Enter Initial state
 X=
 Y=
@@ -72,5 +74,6 @@ Classes Description
 > **NodeHA**
 
  -A node class that helps the specific heuristic search algorithms A*. to move and navigate its coordinate.
+
 
 
