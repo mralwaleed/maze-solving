@@ -148,4 +148,6 @@ a given lis[] until there are not any parent
   - Is where we read an image and insert it into 2D-array and it contain the main methods which start any search algorithm.
 
 
+## Result
+![alt text](https://github.com/mralwaleed/maze-solving/blob/gh-pages/Result/A_Star_Manhattan.png)
 
