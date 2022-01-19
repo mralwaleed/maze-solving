@@ -4,7 +4,7 @@ We will show you in this project the application of the Artificial Intelligent (
 
 ## Desing Classes
 Classes Description
-> **Breadth First Search (BFS)**
+> *Breadth First Search (BFS)*
 
  -A class initiated by initial state to find the goal state in BFS search algorithm.
 
