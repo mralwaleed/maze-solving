@@ -10,6 +10,33 @@ Install the necessary requirmenets by running:
 ``` bash
     pip install -r requirements.txt
 ```
+**Running **
+1. Open a terminal and cd to the project directory and install requirements:
+``` bash
+   python3 readfile.py
+```
+2. Enter initial state X and Y
+  ``` bash
+    Welcome :)
+Enter Initial state
+X=
+Y=
+```
+3. Enter your Goal state 
+``` bash
+   Enter your goal
+X=
+Y=
+```
+4. Choose an algorthim.
+``` bash
+1- BFS
+2- DFS
+3- Greedy
+4- A*
+Enter number of algrithm: 
+```
+
 
 
 ## Desing Classes
