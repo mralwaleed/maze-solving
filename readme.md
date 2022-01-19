@@ -165,7 +165,7 @@ DFS Search Algorithm sample run:
 
 It took 13 second to find the solution.
 
-**BFS Search **
+**BFS Search**
 
 BFS Search Algorithm sample run:
 
@@ -173,7 +173,7 @@ BFS Search Algorithm sample run:
 
 It took 13 second to find the solution.
 
-**A* Manhattan**
+**A Star Manhattan**
 
 A* Manhattan distance sample run:
 
