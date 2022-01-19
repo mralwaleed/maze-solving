@@ -99,8 +99,49 @@ Classes Description
   - findpath(self, go, lis=[]): The goal is to find the path from the given go and append it to a given lis[] until there are not any parent.
 - In Class Greedy
   - Search(self, root, goalx, goaly): Begins the Greedy search algorithm by taking the root and the coordinate(x,y) to find the goal state. We implemented a while to help finding the goal in the following condition. Then we implemented a for loop in it to search for children and look if they the goal or not if not add children to the white list and black list.
-  - to search for children and look if they the goal or not if not add children to the white list and black list.
+  - findpath(self, go, lis=[]): The goal is to find the path from the given go and append it to 
+a given lis[] until there are not any parent
 
+- In Class NodeH “Greedy’s Node”
+  - __init__(self,x,y,nim,goalX,goalY,cost,chose): A default constructor to store coordinate and data as attributes. It contains a Manhattan and Euclidean choice. If the choice is 1 so the HU will be in Manhattan way else it will be Euclidean.
+  -  _it_(self,other): it returns true if fcost< the given fcost.
+  - MoveToRight(self): Moving the node to right and append it to childering.
+  - MoveToLift(self): Moving the node to left and append it to childering.
+  - MovetoUp(self): Moving the node upward and append it to childering.
+  - MoveToDown(self): Moving the node Downward and append it to childering.
+  - isGoal(self,x,y): To check whether the coordinate (x,y) is reached the goal state or not.
+  - print(self): Prints the coordinate (x,y).
+  - ExpandMove(self): To Expand the move for the four directions (up,down,left,right).
+  - Manhattan(self): It finds the heuristic in Manhattan way and returns heuristic x + heuristic y.
+  - Euclidean(self): It finds the heuristic in Euclidean way, heuristicX*heuristicX and heuristicY*heuristicY then compine the result after that returns the square root of result on result.
+
+- In Class NodeHA “A*’s Node”
+  - __init__(self,x,y,nim,goalX,goalY,cost,chose): A default constructor to store coordinate and data as attributes. It contains a Manhattan and Euclidean choice. If the choice is 1 so the HU will be in Manhattan way else it will be Euclidean.
+  - _it_(self,other): it returns true if fcost< the given fcost.
+  - MoveToRight(self): Moving the node to right and append it to childering.
+  - MoveToLift(self): Moving the node to left and append it to childering.
+  - MovetoUp(self): Moving the node upward and append it to childering.
+  - MoveToDown(self): Moving the node Downward and append it to childering.
+  - isGoal(self,x,y): To check whether the coordinate (x,y) is reached the goal state or not.
+  - print(self): Prints the coordinate (x,y).
+  - ExpandMove(self): To Expand the move for the four directions (up,down,left,right).
+  - Manhattan(self): It finds the heuristic in Manhattan way and returns heuristic x + heuristic y.
+  - Euclidean(self): It finds the heuristic in Euclidean way,heuristicX*heuristicX and heuristicY*heuristicY then compine the result after that returns the square root of result on result.
+- In Class NodeHA “A*’s Node”
+  - __init__(self,x,y,nim,goalX,goalY,cost,chose): A default constructor to store coordinate and data as attributes. It contains a Manhattan and Euclidean choice. If the choice is 1 so the HU will be in Manhattan way else it will be Euclidean.
+  - _it_(self,other): it returns true if fcost< the given fcost.
+  - MoveToRight(self): Moving the node to right and append it to childering.
+  - MoveToLift(self): Moving the node to left and append it to childering.
+  - MovetoUp(self): Moving the node upward and append it to childering.
+  - MoveToDown(self): Moving the node Downward and append it to childering.
+  - isGoal(self,x,y): To check whether the coordinate (x,y) is reached the goal state or not.
+  - print(self): Prints the coordinate (x,y).
+  - ExpandMove(self): To Expand the move for the four directions (up,down,left,right).
+  - Manhattan(self): It finds the heuristic in Manhattan way and returns heuristic x+ heuristic y. 
+  - Euclidean(self): It finds the heuristic in Euclidean way, heuristicX*heuristicX and heuristicY*heuristicY then compine the result after that returns the square root of result on result.
+  
+- In Class Astar
+ 
 
 
 
