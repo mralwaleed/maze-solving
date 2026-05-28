@@ -1,188 +1,132 @@
-# Maze solving 
-Robots nowadays is a major component due to its ability to plan its path. You can program a robot for all possible motions in order to accomplish specific task. However, preprogramming a robot for all possible cases might meet is an impossible thing, due to the fact that number of motions can be an infinite loop or large number of motions. 
-We will show you in this project the application of the Artificial Intelligent (search algorithm especially), robot path planning (e.g. A*) and how will it find its optimal path like humans and how they are able to see their obstacles and finding their optimal path in real life.
+# Maze Solver
 
-## Getting Started
-**Requirements**
+Python implementation of four pathfinding algorithms applied to image-based mazes. Loads a maze from a grayscale image, converts it into a binary grid, and solves it using BFS, DFS, Greedy Best-First, or A*. The solved path is drawn directly onto the image.
 
-Install the necessary requirmenets by running:
+Built as an AI course project to demonstrate how search algorithms handle robot path planning — finding optimal or near-optimal routes through obstacle grids the same way autonomous systems do.
 
-``` bash
-    pip install -r requirements.txt
+## Prerequisites
+
+- Python 3.9+
+- pip
+
+## Tech Stack
+
+- **Python 3** — core language
+- **NumPy** — binary grid representation of the maze
+- **Pillow (PIL)** — image loading, pixel manipulation, and display
+- **pytest** — test runner
+
+## Installation
+
+```bash
+# Clone the repo
+git clone https://github.com/mralwaleed/maze-solving.git
+cd maze-solving
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Or install as an editable package (includes dev dependencies)
+pip install -e ".[dev]"
 ```
 
-**Running**
+## Running
 
-1. Open a terminal and cd to the project directory and run readfile.py:
-``` bash
-   python3 readfile.py
-```
-2. Enter initial state X and Y
-  ``` bash
- Welcome :)
-Enter Initial state
-X=
-Y=
-```
-3. Enter your Goal state 
-``` bash
-   Enter your goal
-X=
-Y=
-```
-4. Choose an algorthim.
-``` bash
-1- BFS
-2- DFS
-3- Greedy
-4- A*
-Enter number of algrithm: 
+**Interactive mode** (prompts for start/goal positions and algorithm choice):
+
+```bash
+python3 main.py
 ```
 
+**CLI mode** (pass everything as arguments):
 
+```bash
+python3 main.py --maze assets/maze.jpg --start 10 10 --goal 200 200 --algorithm 4
+```
 
-## Desing Classes
-Classes Description
-> **Breadth First Search (BFS)**
+Algorithm options: `1` = BFS, `2` = DFS, `3` = Greedy, `4` = A*.
 
- -A class initiated by initial state to find the goal state in BFS search algorithm.
+The program opens a window showing the maze with the solved path highlighted.
 
-> **Depth First Search (DFS)**
+## Project Structure
 
- -A class initiated by initial state to find the goal state in DFS search algorithm
+```
+maze-solving/
+├── main.py                       # Entry point
+├── pyproject.toml                # Package config
+├── requirements.txt              # Dependencies
+├── assets/
+│   └── maze.jpg                  # Sample maze image
+├── maze_solver/
+│   ├── __init__.py
+│   ├── cli.py                    # CLI interface and argument parsing
+│   ├── maze_loader.py            # Image → grid conversion, path drawing
+│   ├── node.py                   # Unified node class (heuristic-aware)
+│   └── algorithms/
+│       ├── __init__.py
+│       ├── astar.py              # A* search
+│       ├── bfs.py                # Breadth-first search
+│       ├── dfs.py                # Depth-first search
+│       └── greedy.py             # Greedy best-first search
+├── tests/
+│   ├── __init__.py
+│   ├── test_node.py              # Node unit tests
+│   └── test_algorithms.py        # Algorithm integration tests
+├── results/                      # Saved output images
+│   ├── A_Star_Manhattan.png
+│   ├── BFS.png
+│   ├── DFS.png
+│   └── Greedy_Manhattan.png
+└── readme.md
+```
 
-> **Astar**
+## Algorithms
 
- -A class initiated by initial state to find the goal state by calculate F(n) and find the less costly path “Optimal path”.
- 
-> **Greedy**
+| Algorithm | Guarantees Shortest Path | Uses Heuristic | Strategy |
+|-----------|--------------------------|----------------|----------|
+| BFS       | Yes                      | No             | Explores all nodes at current depth before going deeper |
+| DFS       | No                       | No             | Explores as deep as possible before backtracking |
+| Greedy    | No                       | Yes            | Always picks the node closest to the goal |
+| A*        | Yes                      | Yes            | Balances actual cost + heuristic for optimal path |
 
- -A class initiated by initial state to find the goal state by Finding the less costly path “G(n)”.
+Greedy and A* support two heuristic functions:
+- **Manhattan distance** — `|dx| + |dy|`, suited for grids with 4-directional movement
+- **Euclidean distance** — `sqrt(dx² + dy²)`, straight-line distance to goal
 
-> **Node**
+## Running Tests
 
- -A node class that helps search algorithms (BFS and DFS) to move and navigate its coordinate.
+```bash
+python3 -m pytest tests/ -v
+```
 
-> **main**
+This runs 25 tests covering node creation, expansion, heuristic calculation, path tracing, and all four algorithms against known grids.
 
- -Used to read an image in a specific location in computer and convert it into 2D-array and it has a main which triggers the whole program.
+## Results
 
-> **NodeH**
+All algorithms tested against the same maze image:
 
- -A node class that helps the specific heuristic search algorithms Greedy. to  move and navigate its coordinate.
+**A\* (Manhattan)** — optimal path, cost-aware:
 
-> **NodeHA**
+![A* Manhattan](https://github.com/mralwaleed/maze-solving/blob/gh-pages/Result/A_Star_Manhattan.png)
 
- -A node class that helps the specific heuristic search algorithms A*. to move and navigate its coordinate.
+**Greedy (Manhattan)** — fast but not always optimal:
 
+![Greedy Manhattan](https://github.com/mralwaleed/maze-solving/blob/gh-pages/Result/Greedy_Manhattan.png)
 
-
-
-## Implementation 
-- In Class Node “BFS and DFS’s Node”
-    - __init__(self,x,y,nim): A default constructor to store coordinate and data as attributes.
-    - MoveToRight(self): Moving the node to right and append it to childering.
-    - MoveToLift(self): Moving the node to left and append it to childering.
-    - MovetoUp(self): Moving the node upward and append it to childering.
-    - MoveToDown(self): Moving the node Downward and append it to childering.
-    - isGoal(self,x,y): To check whether the coordinate (x,y) is reached the goal state or not.
-    -  print(self): Prints the coordinate (x,y).
-    -  ExpandMove(self): To Expand the move for the four directions (up,down,left,right)
-
-- In Class BFS
-  - Search(self, root, goalx, goaly): it starts the BFS search algorithm which uses queue and checks if it is the solution or not ,if it is not it inters into the children and checks if one of them is the solution or not, if not it will add to the queue .The Search method begins the BFS by taking the root and the coordinate(x,y) to find the goal state. We implemented a while to help finding the goal. Then we implemented a for loop in it to search for children and look if they the goal or not if not add children to the white list and black list
-  - findpath(self, go, lis=[]): The goal is to find the path from the given go and append it to a given lis[] until there are not any parent
-
-- In Class DFS
-  - Search(self, root, goalx, goaly): Begins the DFS search algorithm by taking the root and the coordinate(x,y) to find the goal state. We implemented a while to help finding the goal in the following condition. Then we implemented a for loop in it to search for children and look if they the goal or not if not add children to the white list and black list
-
-  - findpath(self, go, lis=[]): The goal is to find the path from the given go and append it to a given lis[] until there are not any parent.
-- In Class Greedy
-  - Search(self, root, goalx, goaly): Begins the Greedy search algorithm by taking the root and the coordinate(x,y) to find the goal state. We implemented a while to help finding the goal in the following condition. Then we implemented a for loop in it to search for children and look if they the goal or not if not add children to the white list and black list.
-  - findpath(self, go, lis=[]): The goal is to find the path from the given go and append it to 
-a given lis[] until there are not any parent
-
-- In Class NodeH “Greedy’s Node”
-  - __init__(self,x,y,nim,goalX,goalY,cost,chose): A default constructor to store coordinate and data as attributes. It contains a Manhattan and Euclidean choice. If the choice is 1 so the HU will be in Manhattan way else it will be Euclidean.
-  -  _it_(self,other): it returns true if fcost< the given fcost.
-  - MoveToRight(self): Moving the node to right and append it to childering.
-  - MoveToLift(self): Moving the node to left and append it to childering.
-  - MovetoUp(self): Moving the node upward and append it to childering.
-  - MoveToDown(self): Moving the node Downward and append it to childering.
-  - isGoal(self,x,y): To check whether the coordinate (x,y) is reached the goal state or not.
-  - print(self): Prints the coordinate (x,y).
-  - ExpandMove(self): To Expand the move for the four directions (up,down,left,right).
-  - Manhattan(self): It finds the heuristic in Manhattan way and returns heuristic x + heuristic y.
-  - Euclidean(self): It finds the heuristic in Euclidean way, heuristicX*heuristicX and heuristicY*heuristicY then compine the result after that returns the square root of result on result.
-
-- In Class NodeHA “A*’s Node”
-  - __init__(self,x,y,nim,goalX,goalY,cost,chose): A default constructor to store coordinate and data as attributes. It contains a Manhattan and Euclidean choice. If the choice is 1 so the HU will be in Manhattan way else it will be Euclidean.
-  - _it_(self,other): it returns true if fcost< the given fcost.
-  - MoveToRight(self): Moving the node to right and append it to childering.
-  - MoveToLift(self): Moving the node to left and append it to childering.
-  - MovetoUp(self): Moving the node upward and append it to childering.
-  - MoveToDown(self): Moving the node Downward and append it to childering.
-  - isGoal(self,x,y): To check whether the coordinate (x,y) is reached the goal state or not.
-  - print(self): Prints the coordinate (x,y).
-  - ExpandMove(self): To Expand the move for the four directions (up,down,left,right).
-  - Manhattan(self): It finds the heuristic in Manhattan way and returns heuristic x + heuristic y.
-  - Euclidean(self): It finds the heuristic in Euclidean way,heuristicX*heuristicX and heuristicY*heuristicY then compine the result after that returns the square root of result on result.
-- In Class NodeHA “A*’s Node”
-  - __init__(self,x,y,nim,goalX,goalY,cost,chose): A default constructor to store coordinate and data as attributes. It contains a Manhattan and Euclidean choice. If the choice is 1 so the HU will be in Manhattan way else it will be Euclidean.
-  - _it_(self,other): it returns true if fcost< the given fcost.
-  - MoveToRight(self): Moving the node to right and append it to childering.
-  - MoveToLift(self): Moving the node to left and append it to childering.
-  - MovetoUp(self): Moving the node upward and append it to childering.
-  - MoveToDown(self): Moving the node Downward and append it to childering.
-  - isGoal(self,x,y): To check whether the coordinate (x,y) is reached the goal state or not.
-  - print(self): Prints the coordinate (x,y).
-  - ExpandMove(self): To Expand the move for the four directions (up,down,left,right).
-  - Manhattan(self): It finds the heuristic in Manhattan way and returns heuristic x+ heuristic y. 
-  - Euclidean(self): It finds the heuristic in Euclidean way, heuristicX*heuristicX and heuristicY*heuristicY then compine the result after that returns the square root of result on result.
-  
-- In Class Astar
-  - Search(self, root, goalx, goaly): Begins the A* search algorithm by taking the root and the coordinate(x,y) to find the goal state, We implemented a while to help finding the goal in the following condition. Then we implemented a for loop in it to search for children and look if they the goal or not if not add children to the white list and black list. 
-  - findpath(self, go, lis=[]): The goal is to find the path from the given go and append it to a given lis[] until there are not any parent.
-
-- In the main class: 
-  - Is where we read an image and insert it into 2D-array and it contain the main methods which start any search algorithm.
-
-
-## Result
-**Greedy Manhattan**
-
-Greedy Manhattan distance sample run:
-
-![Greedy_Manhattan](https://github.com/mralwaleed/maze-solving/blob/gh-pages/Result/Greedy_Manhattan.png)
-
-It took 12 second to find the solution.
-
-**DFS Search**
-
-DFS Search Algorithm sample run:
-
-![DFS](https://github.com/mralwaleed/maze-solving/blob/gh-pages/Result/DFS.png)
-
-It took 13 second to find the solution.
-
-**BFS Search**
-
-BFS Search Algorithm sample run:
+**BFS** — guarantees shortest path, explores more nodes:
 
 ![BFS](https://github.com/mralwaleed/maze-solving/blob/gh-pages/Result/BFS.png)
 
-It took 13 second to find the solution.
+**DFS** — fast but path quality varies:
 
-**A Star Manhattan**
+![DFS](https://github.com/mralwaleed/maze-solving/blob/gh-pages/Result/DFS.png)
 
-A* Manhattan distance sample run:
+## Roadmap
 
-![AStar](https://github.com/mralwaleed/maze-solving/blob/gh-pages/Result/A_Star_Manhattan.png)
+Planned improvements for future iterations:
 
+1. **Web-based visualization** — Replace the CLI image viewer with a browser UI (Flask + Canvas or Matplotlib animation) that renders the maze and animates the search in real time, showing explored nodes and the final path step by step. The entry point would be `maze_solver/server.py`, serving a static frontend that communicates with the solver via a REST endpoint.
 
+2. **Maze generator** — Add a procedural maze generator (`maze_solver/generator.py`) using recursive backtracking or Prim's algorithm. This removes the dependency on external maze images and makes the project self-contained for testing and demos. Generated mazes would be saved as images in `assets/`.
 
-
-
-
-
-
+3. **Algorithm comparison mode** — Run all four algorithms on the same maze and display a side-by-side comparison of path length, nodes explored, and execution time. This would live in `maze_solver/benchmark.py` and could output a summary table or comparison image.
